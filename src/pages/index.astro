@@ -4,8 +4,11 @@ import ProjectCard from "../components/ProjectCard.astro";
 import Technologies from "../components/Technologies.vue";
 import Layout from "../layouts/Layout.astro";
 
-const arr = [{ name: "React", img: "aaaa" }];
-const len = arr.length;
+const arr = [
+  { name: "React", img: "aaaa" },
+  { name: "Vue", img: "aaa" },
+  { name: "Svelte", img: "aa" },
+];
 ---
 
 <Layout title="Welcome to Astro.">
@@ -32,7 +35,7 @@ const len = arr.length;
       Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Fusce
       consectetuer risus a nunc. Nulla accumsan.
     </p>
-    <Technologies tech={arr} len={len} client:visible />
+    <Technologies tech={arr} client:visible />
   </main>
 </Layout>
 
