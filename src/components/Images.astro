@@ -1,0 +1,23 @@
+<div class="images-cont">
+  <div class="first"></div>
+  <div class="second"></div>
+  <div class="third"></div>
+</div>
+
+<style>
+  .images-cont {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    height: 360px;
+    gap: 8px;
+    padding: 16px 0;
+    & > div {
+      background-color: gray;
+      border-radius: 10px;
+    }
+  }
+  .first {
+    grid-row: 1 / 3;
+  }
+</style>
