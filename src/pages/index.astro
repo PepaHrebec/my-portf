@@ -1,7 +1,11 @@
 ---
 import Images from "../components/Images.astro";
 import ProjectCard from "../components/ProjectCard.astro";
+import Technologies from "../components/Technologies.vue";
 import Layout from "../layouts/Layout.astro";
+
+const arr = [{ name: "React", img: "aaaa" }];
+const len = arr.length;
 ---
 
 <Layout title="Welcome to Astro.">
@@ -24,6 +28,11 @@ import Layout from "../layouts/Layout.astro";
         techs="React / Vite / Next.js"
       />
     </div>
+    <p class="basic-text">
+      Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Fusce
+      consectetuer risus a nunc. Nulla accumsan.
+    </p>
+    <Technologies tech={arr} len={len} client:visible />
   </main>
 </Layout>
 
