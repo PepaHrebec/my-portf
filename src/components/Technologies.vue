@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, ref, toRefs } from "vue";
+import { computed, ref, toRefs, watch } from "vue";
 
 interface tech {
   name: string;
@@ -24,40 +24,68 @@ const hintText = computed(() => {
 });
 
 function handle(event: Event) {
-  if (!(event.target as Element)?.classList.contains("clicked")) {
-    (event.target as Element)?.classList.add("clicked");
+  if (!(event.currentTarget as Element)?.classList.contains("clicked")) {
+    (event.currentTarget as Element)?.classList.add("clicked");
     amount.value++;
-    if (amount.value % len == 0) {
-      btnRefs.value.forEach((btn: Element) => {
-        btn.classList.remove("clicked");
-      });
-    }
   }
 }
+
+watch(amount, (curr) => {
+  if (curr % len == 0) {
+    btnRefs.value.forEach((btn: Element) => {
+      btn.classList.remove("clicked");
+    });
+  }
+});
 </script>
 
 <template>
   <div>
-    <button v-for="item in tech" @click="handle" ref="btnRefs">
-      {{ item.name }}
-    </button>
+    <div class="button-wrap">
+      <button v-for="item in tech" @click="handle" ref="btnRefs">
+        <img :src="item.img" alt="Tech logo" />
+        <div>{{ item.name }}</div>
+      </button>
+    </div>
     <div>{{ hintText }}</div>
   </div>
 </template>
 
-<style>
+<style scoped>
+.button-wrap {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
 button {
-  width: 50px;
-  height: 25px;
+  min-width: fit-content;
+  height: 4em;
   box-shadow: 0px 1px 2px 1px rgba(0, 0, 0, 0.15);
-  background-color: #fafafa;
+  background-color: var(--interact-white);
   border: none;
-  transition: background-color box-shadow 450ms;
+  transition: all 450ms;
   border-radius: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  padding: 0.5em 1em;
+  flex: 1;
+}
+
+button > div {
+  font-size: 1.4em;
 }
 
 .clicked {
   background-color: var(--backg-white);
-  box-shadow: inset 0px 0.5px 1px 0.5px rgba(0, 0, 0, 0.15);
+  box-shadow: inset 0px 0.5px 1px 0.5px rgba(0, 0, 0, 0.35);
+}
+
+img {
+  height: 2.8em;
 }
 </style>

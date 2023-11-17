@@ -4,10 +4,16 @@ import ProjectCard from "../components/ProjectCard.astro";
 import Technologies from "../components/Technologies.vue";
 import Layout from "../layouts/Layout.astro";
 
+// vite, postcss, styledcomp, mongo, astro
+
 const arr = [
-  { name: "React", img: "aaaa" },
-  { name: "Vue", img: "aaa" },
-  { name: "Svelte", img: "aa" },
+  { name: "React", img: "/assets/react.png" },
+  { name: "Vue", img: "/assets/vue.png" },
+  { name: "Node", img: "/assets/node.png" },
+  { name: "JavaScript", img: "/assets/js.png" },
+  { name: "Next.js", img: "/assets/nextjs.png" },
+  { name: "Figma", img: "/assets/figma.png" },
+  { name: "TypeScript", img: "/assets/typescript.png" },
 ];
 ---
 
@@ -30,12 +36,20 @@ const arr = [
         desc="Projekt co využívá React a Next.js"
         techs="React / Vite / Next.js"
       />
+      <ProjectCard
+        title="Vue Projekt"
+        desc="Projekt co využívá Vue a Nuxt.js"
+        techs="Vue / Pinia / Nuxt.js"
+      />
     </div>
     <p class="basic-text">
       Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Fusce
       consectetuer risus a nunc. Nulla accumsan.
     </p>
-    <Technologies tech={arr} client:visible />
+    <h2>Technologie</h2>
+    <div class="tech-wrap">
+      <Technologies tech={arr} client:visible />
+    </div>
   </main>
 </Layout>
 
@@ -54,7 +68,11 @@ const arr = [
   }
   .card-wrap {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    gap: 24px;
+    padding: 24px 0;
+  }
+  .tech-wrap {
     padding: 24px 0;
   }
 </style>
