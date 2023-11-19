@@ -64,6 +64,7 @@ button {
   height: 4em;
   box-shadow: 0px 1px 2px 1px rgba(0, 0, 0, 0.15);
   background-color: var(--interact-white);
+  color: var(--text-dark);
   border: none;
   transition: all 450ms;
   border-radius: 10px;
