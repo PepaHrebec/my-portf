@@ -63,8 +63,8 @@ button {
   min-width: fit-content;
   height: 4em;
   box-shadow: 0px 1px 2px 1px rgba(0, 0, 0, 0.15);
-  background-color: var(--interact-white);
-  color: var(--text-dark);
+  background-color: var(--interactive-backg);
+  color: var(--main-text);
   border: none;
   transition: all 450ms;
   border-radius: 10px;
@@ -82,7 +82,7 @@ button > div {
 }
 
 .clicked {
-  background-color: var(--backg-white);
+  background-color: var(--main-backg);
   box-shadow: inset 0px 0.5px 1px 0.5px rgba(0, 0, 0, 0.35);
 }
 

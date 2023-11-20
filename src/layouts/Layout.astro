@@ -11,7 +11,7 @@ const { title } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="description" content="Astro description" />
@@ -21,9 +21,47 @@ const { title } = Astro.props;
     <title>{title}</title>
   </head>
   <body>
+    <button type="button" class="toggle"
+      >Change to light theme (or icon here)</button
+    >
     <slot />
   </body>
 </html>
+
+<script>
+  function calculateSettingAsThemeString({
+    localStorageTheme,
+    systemSettingDark,
+  }: any): string {
+    if (localStorageTheme !== null) {
+      return localStorageTheme;
+    }
+
+    if (systemSettingDark.matches) {
+      return "dark";
+    }
+
+    return "light";
+  }
+
+  const localStorageTheme = localStorage.getItem("theme");
+  const systemSettingDark = window.matchMedia("(prefers-color-scheme: dark)");
+
+  let currentThemeSetting = calculateSettingAsThemeString({
+    localStorageTheme,
+    systemSettingDark,
+  });
+
+  const button = document.querySelector(".toggle");
+
+  button?.addEventListener("click", () => {
+    const newTheme = currentThemeSetting === "dark" ? "light" : "dark";
+    document.querySelector("html")?.setAttribute("data-theme", newTheme);
+    localStorage.setItem("theme", newTheme);
+    currentThemeSetting = newTheme;
+  });
+</script>
+
 <style is:global>
   * {
     margin: 0;
@@ -31,20 +69,23 @@ const { title } = Astro.props;
     box-sizing: border-box;
     font-family: "Inter", sans-serif;
   }
-  :root {
-    --backg-white: #f7f7f7;
-    --text-dark: #1e1e1e;
-    --interact-white: #fafafa;
+  [data-theme="light"] {
+    --main-backg: #f7f7f7;
+    --main-text: #1e1e1e;
+    --interactive-backg: #fafafa;
     --small-text: #585858;
+    --inverse-backg: #161616;
+    --inverse-text: #e3e3e3;
+  }
+  [data-theme="dark"] {
+    --main-backg: #161616;
+    --main-text: #e3e3e3;
+    --interactive-backg: #282828;
+    --small-text: #e3e3e3;
+    --inverse-backg: #f7f7f7;
+    --inverse-text: #1e1e1e;
   }
   html {
+    background-color: var(--main-backg);
   }
-  /* @media (prefers-color-scheme: dark) {
-    :root {
-      --backg-white: #161616;
-      --text-dark: #e3e3e3;
-      --interact-white: #282828;
-      --small-text: #e3e3e3;
-    }
-  } */
 </style>
