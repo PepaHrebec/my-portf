@@ -52,6 +52,10 @@ const { title } = Astro.props;
     systemSettingDark,
   });
 
+  document
+    .querySelector("html")
+    ?.setAttribute("data-theme", currentThemeSetting);
+
   const button = document.querySelector(".toggle");
 
   button?.addEventListener("click", () => {
