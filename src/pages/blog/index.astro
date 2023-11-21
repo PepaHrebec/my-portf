@@ -11,7 +11,9 @@ const allPosts = await getCollection("blog");
       allPosts.map((post) => {
         return (
           <div class="article-wrap">
-            <a href={`/blog/${post.slug}`}>{post.data.title}</a>
+            <h2>
+              <a href={`/blog/${post.slug}`}>{post.data.title}</a>
+            </h2>
             <p class="small-text">{post.data.description}</p>
           </div>
         );
@@ -21,13 +23,20 @@ const allPosts = await getCollection("blog");
 </Layout>
 
 <style>
+  main {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  h2 {
+    font-size: 1.3em;
+  }
   a {
     text-decoration: none;
     color: var(--main-text);
   }
   .small-text {
     font-weight: 300;
-    font-style: italic;
     color: var(--small-text);
   }
 </style>

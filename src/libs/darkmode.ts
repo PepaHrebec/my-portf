@@ -13,20 +13,24 @@ function calculateSettingAsThemeString({
   return "light";
 }
 
+const button: HTMLButtonElement = document.querySelector(".toggle")!;
+
 const localStorageTheme = localStorage.getItem("theme");
 const systemSettingDark = window.matchMedia("(prefers-color-scheme: dark)");
 
 let currentThemeSetting = calculateSettingAsThemeString({
   localStorageTheme,
   systemSettingDark,
+  button,
 });
+
+button.innerText = localStorageTheme === "dark" ? "Světlý" : "Temný";
 
 document.querySelector("html")?.setAttribute("data-theme", currentThemeSetting);
 
-const button = document.querySelector(".toggle");
-
 button?.addEventListener("click", () => {
   const newTheme = currentThemeSetting === "dark" ? "light" : "dark";
+  button.innerText = newTheme === "dark" ? "Světlý" : "Temný";
   document.querySelector("html")?.setAttribute("data-theme", newTheme);
   localStorage.setItem("theme", newTheme);
   currentThemeSetting = newTheme;

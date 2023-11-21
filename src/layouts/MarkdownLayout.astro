@@ -1,0 +1,49 @@
+---
+const { title, description, date } = Astro.props;
+const dateStr = new Date(date).toISOString().substring(0, 10);
+---
+
+<main>
+  <header>
+    <div class="center">
+      <div class="img"></div>
+      <h1>{title}</h1>
+      <p class="date">{dateStr}</p>
+    </div>
+    <p class="descr">{description}</p>
+  </header>
+  <slot />
+</main>
+
+<style is:global>
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p {
+    color: var(--main-text);
+  }
+  header {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding-bottom: 16px;
+  }
+  .center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+  }
+  .img {
+    aspect-ratio: 16/9;
+    width: 100%;
+    background-color: gray;
+  }
+  pre {
+    border-radius: 10px;
+    padding: 8px;
+  }
+</style>
