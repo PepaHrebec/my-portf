@@ -47,11 +47,30 @@ watch(amount, (curr) => {
         <div>{{ item.name }}</div>
       </button>
     </div>
+    <Transition mode="out-in" name="swap">
+      <button v-if="hintText === 'Click me!'">Edit</button>
+      <button v-else-if="hintText === 'Almost there!'">Save</button>
+      <button v-else-if="hintText === 'Good job!'">Cancel</button>
+    </Transition>
     <div>{{ hintText }}</div>
   </div>
 </template>
 
 <style scoped>
+.swap-enter-active,
+.slide-up-leave-active {
+  transition: all 0.25s ease-out;
+}
+
+.swap-enter-from {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.swap-leave-to {
+  opacity: 0;
+  transform: translateY(-30px);
+}
 .button-wrap {
   display: flex;
   flex-direction: row;
