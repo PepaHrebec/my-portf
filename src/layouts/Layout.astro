@@ -53,6 +53,15 @@ const { title } = Astro.props;
     --inverse-backg: #f7f7f7;
     --inverse-text: #1e1e1e;
   }
+  [data-theme="dark"] .astro-code,
+  [data-theme="dark"] .astro-code span {
+    color: var(--shiki-dark) !important;
+    background-color: var(--shiki-dark-bg) !important;
+
+    font-style: var(--shiki-dark-font-style) !important;
+    font-weight: var(--shiki-dark-font-weight) !important;
+    text-decoration: var(--shiki-dark-text-decoration) !important;
+  }
   html {
     background-color: var(--main-backg);
   }

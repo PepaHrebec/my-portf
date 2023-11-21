@@ -52,7 +52,6 @@ watch(amount, (curr) => {
       <button v-else-if="hintText === 'Almost there!'">Save</button>
       <button v-else-if="hintText === 'Good job!'">Cancel</button>
     </Transition>
-    <div>{{ hintText }}</div>
   </div>
 </template>
 

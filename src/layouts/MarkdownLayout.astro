@@ -25,6 +25,9 @@ const dateStr = new Date(date).toISOString().substring(0, 10);
   p {
     color: var(--main-text);
   }
+  p {
+    line-height: 1.6;
+  }
   header {
     display: flex;
     flex-direction: column;
@@ -42,8 +45,14 @@ const dateStr = new Date(date).toISOString().substring(0, 10);
     width: 100%;
     background-color: gray;
   }
+  .descr {
+    font-weight: 700;
+  }
   pre {
     border-radius: 10px;
     padding: 8px;
+  }
+  pre * {
+    font-family: monospace;
   }
 </style>

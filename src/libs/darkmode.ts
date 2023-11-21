@@ -15,6 +15,8 @@ function calculateSettingAsThemeString({
 
 const button: HTMLButtonElement = document.querySelector(".toggle")!;
 
+const pres = document.querySelectorAll("pre");
+
 const localStorageTheme = localStorage.getItem("theme");
 const systemSettingDark = window.matchMedia("(prefers-color-scheme: dark)");
 
@@ -25,7 +27,6 @@ let currentThemeSetting = calculateSettingAsThemeString({
 });
 
 button.innerText = localStorageTheme === "dark" ? "Světlý" : "Temný";
-
 document.querySelector("html")?.setAttribute("data-theme", currentThemeSetting);
 
 button?.addEventListener("click", () => {

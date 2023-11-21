@@ -4,9 +4,7 @@ description: "A short article about Vue and Pinia and stuff"
 date: 2023-21-11
 ---
 
-# Hello
-
-How are youuuu
+In the second season of AMC’s Mad Men, comedian Jimmy Barrett, played by Patrick Fischler, confronts the adman protagonist Don Draper over his sleazy affair with the comedian’s wife: “You know what I like about you? Nothing.”
 
 ```js
 watch(amount, (curr) => {

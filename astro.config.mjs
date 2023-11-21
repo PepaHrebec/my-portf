@@ -6,7 +6,10 @@ import vue from "@astrojs/vue";
 export default defineConfig({
   markdown: {
     shikiConfig: {
-      theme: "dracula",
+      experimentalThemes: {
+        light: "github-light",
+        dark: "github-dark",
+      },
       langs: ["javascript"],
       wrap: true,
     },
