@@ -6,11 +6,28 @@ const allPosts = await getCollection("blog");
 ---
 
 <Layout title="Articles">
-  <ul>
+  <main>
     {
       allPosts.map((post) => {
-        return <a href={`/blog/${post.slug}`}>{post.data.title}</a>;
+        return (
+          <div class="article-wrap">
+            <a href={`/blog/${post.slug}`}>{post.data.title}</a>
+            <p class="small-text">{post.data.description}</p>
+          </div>
+        );
       })
     }
-  </ul>
+  </main>
 </Layout>
+
+<style>
+  a {
+    text-decoration: none;
+    color: var(--main-text);
+  }
+  .small-text {
+    font-weight: 300;
+    font-style: italic;
+    color: var(--small-text);
+  }
+</style>
