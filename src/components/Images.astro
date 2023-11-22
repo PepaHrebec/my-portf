@@ -2,6 +2,7 @@
   <div class="first"></div>
   <div class="second"></div>
   <div class="third"></div>
+  <div class="fourth"></div>
 </div>
 
 <style>
@@ -19,5 +20,20 @@
   }
   .first {
     grid-row: 1 / 3;
+  }
+  .fourth {
+    display: none;
+  }
+  @media screen and (min-width: 992px) {
+    .images-cont {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+    .fourth {
+      grid-row: 1 / 3;
+      display: block;
+    }
+    .fourth {
+      grid-column: 3 / 4;
+    }
   }
 </style>

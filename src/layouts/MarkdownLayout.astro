@@ -4,7 +4,6 @@ const dateStr = new Date(date).toISOString().substring(0, 10);
 ---
 
 <main>
-  <header>
     <div class="center">
       {image == null ? <div class="img"></div> : <img src=`${image}` alt="" />}
       <!-- <img src=`${image}` alt="" />
@@ -13,11 +12,16 @@ const dateStr = new Date(date).toISOString().substring(0, 10);
       <p class="date">{dateStr}</p>
     </div>
     <p class="descr">{description}</p>
-  </header>
   <slot />
 </main>
 
 <style is:global>
+  main {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding-bottom: 16px;
+  }
   h1,
   h2,
   h3,

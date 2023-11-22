@@ -30,7 +30,7 @@ const arr = [
       Jakkoliv klišé to zní, weby jsou opravdu jedna z mých velkých vášní. Když
       je přímo netvořím, rád si pročítám všemožné blogy nebo koukám na
       videa/podcasty o nových technologích, co stojí za zkoušku. O mých názorech
-      na ně jiných koníčcích se dočtete na mém blogu!
+      na ně jiných koníčcích se dočtete na mém <a href="blog">blogu!</a>
     </p>
     <h2>Projekty</h2>
     <div class="card-wrap">
@@ -56,6 +56,7 @@ const arr = [
     <div class="tech-wrap">
       <Technologies tech={arr} client:visible />
     </div>
+    <h2>Kontakty</h2>
   </main>
 </Layout>
 
@@ -64,6 +65,11 @@ const arr = [
     min-height: 100vh;
     background-color: var(--main-backg);
     color: var(--main-text);
+  }
+  a {
+    text-decoration: underline;
+    color: var(--main-text);
+    font-weight: 700;
   }
   h1 {
     font-weight: 700;
