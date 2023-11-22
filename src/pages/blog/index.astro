@@ -5,7 +5,7 @@ import Layout from "../../layouts/Layout.astro";
 const allPosts = await getCollection("blog");
 ---
 
-<Layout title="Articles">
+<Layout title="Články" description="Seznam článků blogu." type="website">
   <main>
     {
       allPosts.map((post) => {

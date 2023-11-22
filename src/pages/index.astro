@@ -6,7 +6,7 @@ import Layout from "../layouts/Layout.astro";
 
 // vite, postcss, styledcomp, mongo, astro
 
-const arr = [
+const techArr = [
   { name: "React", img: "/assets/react.png" },
   { name: "Vue", img: "/assets/vue.png" },
   { name: "Node", img: "/assets/node.png" },
@@ -15,9 +15,22 @@ const arr = [
   { name: "Figma", img: "/assets/figma.png" },
   { name: "TypeScript", img: "/assets/typescript.png" },
 ];
+
+const projectArr = [
+  {
+    title: "React Projekt",
+    desc: "Projekt co využívá React a Next.js",
+    techs: "React / Vite / Next.js",
+  },
+  {
+    title: "Vue Projekt",
+    desc: "Projekt co využívá Vue a Nuxt.js",
+    techs: "Vue / Pinia / Nuxt.js",
+  },
+];
 ---
 
-<Layout title="Welcome to Astro.">
+<Layout title="Blogfolio" description="Portfolio." type="website">
   <main>
     <h1>ahoj, tady Josef</h1>
     <p class="basic-text">
@@ -34,16 +47,17 @@ const arr = [
     </p>
     <h2>Projekty</h2>
     <div class="card-wrap">
-      <ProjectCard
-        title="React Projekt"
-        desc="Projekt co využívá React a Next.js"
-        techs="React / Vite / Next.js"
-      />
-      <ProjectCard
-        title="Vue Projekt"
-        desc="Projekt co využívá Vue a Nuxt.js"
-        techs="Vue / Pinia / Nuxt.js"
-      />
+      {
+        projectArr.map((proj) => {
+          return (
+            <ProjectCard
+              title={proj.title}
+              desc={proj.desc}
+              techs={proj.techs}
+            />
+          );
+        })
+      }
     </div>
     <p class="basic-text">
       Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Fusce
@@ -54,9 +68,21 @@ const arr = [
       <p class="hovering">Klikni na nás!</p>
     </div>
     <div class="tech-wrap">
-      <Technologies tech={arr} client:visible />
+      <Technologies tech={techArr} client:visible />
     </div>
     <h2>Kontakty</h2>
+    <div class="contacts">
+      <a href="https://www.linkedin.com/in/josef-h%C5%99ebec-4b10b7255/"
+        >LinkedIn -></a
+      >
+      <a href="https://github.com/PepaHrebec">GitHub -></a>
+      <div class="mail-wrap">
+        <p>
+          Mail: <span class="mail">josefhrebec02@gmail.com</span>
+        </p>
+        <div class="mail-pop">Zkopírováno</div>
+      </div>
+    </div>
   </main>
 </Layout>
 
@@ -67,9 +93,12 @@ const arr = [
     color: var(--main-text);
   }
   a {
-    text-decoration: underline;
     color: var(--main-text);
     font-weight: 700;
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
   }
   h1 {
     font-weight: 700;
@@ -102,6 +131,35 @@ const arr = [
   .tech-wrap {
     padding: 24px 0;
   }
+  .contacts {
+    padding: 24px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    & p {
+      font-weight: 700;
+    }
+  }
+  .mail {
+    font-weight: 400;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+  .mail-wrap {
+    position: relative;
+  }
+  .mail-pop {
+    position: absolute;
+    top: -1em;
+    left: 6em;
+    z-index: -1;
+    padding: 4px;
+    opacity: 0;
+  }
+  .mail-pop-active {
+    animation: pop-in 1500ms ease-in-out;
+  }
+
   @keyframes zoom {
     from {
       transform: scale(1);
@@ -110,4 +168,43 @@ const arr = [
       transform: scale(1.2);
     }
   }
+
+  @keyframes pop-in {
+    0% {
+      top: -1em;
+      z-index: -1;
+      opacity: 0;
+    }
+    50% {
+      top: -2em;
+      z-index: 2;
+      opacity: 1;
+    }
+    100% {
+      top: -3em;
+      opacity: 0;
+    }
+  }
+
+  @media screen and (min-width: 48rem) {
+    .card-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+  }
 </style>
+
+<script>
+  const mail = document.querySelector(".mail")!;
+  const mailPop = document.querySelector(".mail-pop")!;
+
+  function clipbrd() {
+    navigator.clipboard.writeText("josefhrebec02@gmail.com");
+    mailPop.classList.add("mail-pop-active");
+    setTimeout(() => {
+      mailPop.classList.remove("mail-pop-active");
+    }, 1500);
+  }
+
+  mail.addEventListener("click", clipbrd);
+</script>

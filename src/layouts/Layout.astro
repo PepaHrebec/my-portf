@@ -1,6 +1,8 @@
 ---
 interface Props {
   title: string;
+  description: string;
+  type: string;
 }
 
 import "@fontsource/inter/300.css";
@@ -9,7 +11,7 @@ import "@fontsource/inter/700.css";
 
 import Header from "../components/Header.astro";
 
-const { title } = Astro.props;
+const { title, description, type } = Astro.props;
 ---
 
 <!doctype html>
@@ -19,6 +21,14 @@ const { title } = Astro.props;
     <meta name="description" content="Astro description" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta property="og:title" content=`${title}` />
+    <meta property="og:description" content=`${description}` />
+    <meta property="og:type" content=`${type}` />
+    <!-- <meta property="og:url" content=`${url}` /> -->
+    <!-- <meta
+      property="og:image"
+      content="https://ahrefs.com/blog/wp-content/uploads/2019/12/fb-how-to-become-an-seo-expert.png"
+    /> -->
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
   </head>

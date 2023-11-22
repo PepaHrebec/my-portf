@@ -51,16 +51,6 @@ watch(amount, (curr) => {
         <div :class="hintText">Bun?</div>
       </button>
     </div>
-
-    <!-- <Transition mode="out-in" name="swap">
-      <div class="hint" v-if="hintText === 'Click me!'">Click me!</div>
-      <div class="hint" v-else-if="hintText === 'Almost there!'">
-        Almost there!
-      </div>
-      <div class="hint last" v-else-if="hintText === 'Good job!'">
-        Good job!
-      </div>
-    </Transition> -->
   </div>
 </template>
 
@@ -117,6 +107,7 @@ button {
   gap: 8px;
   padding: 0.5em 1em;
   flex: 1;
+  cursor: pointer;
 }
 
 button > div {
@@ -126,6 +117,10 @@ button > div {
 .clicked {
   background-color: var(--main-backg);
   box-shadow: inset 0px 0.5px 1px 0.5px rgba(0, 0, 0, 0.35);
+}
+
+.bun {
+  cursor: default;
 }
 
 .bun > * {
@@ -144,9 +139,11 @@ button > div {
 img {
   height: 2.8em;
   max-height: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: contain;
 }
 
-@media screen and (min-width: 992px) {
+@media screen and (min-width: 48rem) {
   .main-wrap {
     max-width: 80%;
     margin: 0 auto;
