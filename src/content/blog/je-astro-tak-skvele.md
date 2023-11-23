@@ -1,11 +1,11 @@
 ---
 title: "Je Astro tak skvělé?"
 description: "Proč je (méně JS > více JS) a proč na DX opravdu záleží."
-date: 2023-21-11
+date: 2023-23-11
 image: "/assets/astro-homepage.png"
 ---
 
-Betteridgův zákon nadpisů tvrdí, že pokud otázka jakéhokoliv článku končí otazníkem, dá se prakticky bezestrachu přeskočit tím, že se na ní odpoví "Ne". S radostí Vás tedy zvu k tomu, abyste se podíleli na menším nezákonném jednání a na konci článku odpověděli "Ano", stejně jako jsem to udělal já, když jsem v Astru dal dohromady moji první stránku.
+Betteridgův zákon nadpisů tvrdí, že pokud otázka jakéhokoliv článku končí otazníkem, dá se prakticky bezestrachu přeskočit tím, že se na ní odpoví "Ne". S radostí Vás tedy nabádám k tomu, abyste jeden zákon porušili a na konci článku odpověděli "Ano", stejně jako jsem to udělal já, když jsem v Astru dával dohromady moji první stránku nebo i toto [blogfolio](./../), za jehož návštěvu jsem Vám vděčný.
 
 ## Co je Astro?
 

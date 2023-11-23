@@ -24,7 +24,7 @@ const { Content } = await entry.render();
     title={entry.data.title}
     description={entry.data.description}
     date={entry.data.date}
-    image={entry.data.image ?? null}
+    image={entry.data.image}
   >
     <Content />
   </MarkdownLayout>
