@@ -18,6 +18,8 @@ const techArr = [
   { name: "Sass", img: "/assets/sass.png" },
   { name: "Styled Components", img: "/assets/styled.png" },
   { name: "Vite", img: "/assets/vite.png" },
+  { name: "Git", img: "/assets/git.png" },
+  { name: "Tailwind", img: "/assets/tailwind.png" },
 ];
 
 const projectArr = [
@@ -46,7 +48,7 @@ const projectArr = [
     title: "Tento blog",
     desc: "Osobní blog napsaný s využitím Astra a Vue s dark-modem a generováním článků",
     techs: "Astro.js / Vue / TS / PostCSS / Figma",
-    link: undefined,
+    link: "/",
     ghLink: "https://github.com/PepaHrebec/my-portf",
   },
 ];
@@ -71,6 +73,7 @@ const projectArr = [
     <h2>Top projekty (ostatní na GitHubu níže)</h2>
     <div class="card-wrap">
       {
+        // proběhnu jen na serveru
         projectArr.map((proj) => {
           return (
             <ProjectCard
@@ -97,6 +100,7 @@ const projectArr = [
       <p class="hovering">Klikni na nás!</p>
     </div>
     <div class="tech-wrap">
+      <!-- Já jsem .vue komponenta! -->
       <Technologies tech={techArr} client:visible />
     </div>
     <h2>Kontakty</h2>

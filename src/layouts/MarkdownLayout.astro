@@ -4,14 +4,12 @@ const dateStr = new Date(date).toISOString().substring(0, 10);
 ---
 
 <main>
-    <div class="center">
-      {image == null ? <div class="img"></div> : <img src=`${image}` alt="" />}
-      <!-- <img src=`${image}` alt="" />
-      <div class="img"></div> -->
-      <h1>{title}</h1>
-      <p class="date">{dateStr}</p>
-    </div>
-    <p class="descr">{description}</p>
+  <div class="center">
+    <img src=`${image}` alt="" />
+    <h1>{title}</h1>
+    <p class="date">{dateStr}</p>
+  </div>
+  <p class="descr">{description}</p>
   <slot />
 </main>
 
@@ -34,6 +32,14 @@ const dateStr = new Date(date).toISOString().substring(0, 10);
   p {
     line-height: 1.6;
   }
+  a {
+    color: var(--main-text);
+    font-weight: 700;
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
   header {
     display: flex;
     flex-direction: column;
@@ -45,11 +51,6 @@ const dateStr = new Date(date).toISOString().substring(0, 10);
     flex-direction: column;
     align-items: center;
     gap: 24px;
-  }
-  .img {
-    aspect-ratio: 16/9;
-    width: 100%;
-    background-color: gray;
   }
   img {
     aspect-ratio: 16/9;
@@ -67,4 +68,14 @@ const dateStr = new Date(date).toISOString().substring(0, 10);
   pre * {
     font-family: monospace;
   }
+  li {
+    margin-bottom: 8px;
+  }
 </style>
+
+<script>
+  const as: NodeListOf<HTMLAnchorElement> = document.querySelectorAll("a");
+  as.forEach((a) => {
+    a.classList.contains("exclude") ? null : (a.target = "_blank");
+  });
+</script>
