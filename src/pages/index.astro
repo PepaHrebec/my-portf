@@ -4,8 +4,6 @@ import ProjectCard from "../components/ProjectCard.astro";
 import Technologies from "../components/Technologies.vue";
 import Layout from "../layouts/Layout.astro";
 
-// vite, postcss, styledcomp, mongo, astro
-
 const techArr = [
   { name: "React", img: "/assets/react.png" },
   { name: "Vue", img: "/assets/vue.png" },
@@ -14,18 +12,42 @@ const techArr = [
   { name: "Next.js", img: "/assets/nextjs.png" },
   { name: "Figma", img: "/assets/figma.png" },
   { name: "TypeScript", img: "/assets/typescript.png" },
+  { name: "Astro", img: "/assets/astro.jpeg" },
+  { name: "Mongo", img: "/assets/mongo.png" },
+  { name: "PostCSS", img: "/assets/postcss.png" },
+  { name: "Sass", img: "/assets/sass.png" },
+  { name: "Styled Components", img: "/assets/styled.png" },
+  { name: "Vite", img: "/assets/vite.png" },
 ];
 
 const projectArr = [
   {
-    title: "React Projekt",
-    desc: "Projekt co využívá React a Next.js",
-    techs: "React / Vite / Next.js",
+    title: "Fonetické přepisy",
+    desc: "Aplikace na trénink fonetických přepisů čerpající z API",
+    techs: "React / Vite / TS / Vanilla Extract",
+    link: "https://pepahrebec.github.io/phono_excercise/",
+    ghLink: "https://github.com/PepaHrebec/phono_excercise",
   },
   {
-    title: "Vue Projekt",
-    desc: "Projekt co využívá Vue a Nuxt.js",
-    techs: "Vue / Pinia / Nuxt.js",
+    title: "Next/Express blog",
+    desc: "Blog s Express serverem, Next frontendem, CSR React CMS a autentikací",
+    techs: "Express / Next.js / Mongo / TS / PostCSS",
+    link: undefined,
+    ghLink: "https://github.com/PepaHrebec/exp_blog",
+  },
+  {
+    title: "Portfolio pro fotografa",
+    desc: "Portfolio s využitím Astra v kombinaci s Contentful CMS",
+    techs: "Astro.js / Contentful / TS / PostCSS / Figma",
+    link: undefined,
+    ghLink: "https://github.com/PepaHrebec/dan-portf",
+  },
+  {
+    title: "Tento blog",
+    desc: "Osobní blog napsaný s využitím Astra a Vue s dark-modem a generováním článků",
+    techs: "Astro.js / Vue / TS / PostCSS / Figma",
+    link: undefined,
+    ghLink: "https://github.com/PepaHrebec/my-portf",
   },
 ];
 ---
@@ -34,18 +56,19 @@ const projectArr = [
   <main>
     <h1>ahoj, tady Josef</h1>
     <p class="basic-text">
-      Jsem full-stack dev/student z Prahy, co se ve volném čase dostal z malých
-      JS skriptů k Express a Next webovým aplikacím a ani omylem je nepovažuje
-      za hranice, u kterých je dobré končit (koukám na tebe, Ruste).
+      Jsem full-stack dev/student z Prahy, co se ve volném čase za poslední
+      téměř dva roky dostal z malých JS skriptů k Express a Next webovým
+      aplikacím a ani omylem je nepovažuje za hranice, u kterých je dobré končit
+      (koukám na tebe, Ruste).
     </p>
     <Images />
     <p class="basic-text">
       Jakkoliv klišé to zní, weby jsou opravdu jedna z mých velkých vášní. Když
       je přímo netvořím, rád si pročítám všemožné blogy nebo koukám na
       videa/podcasty o nových technologích, co stojí za zkoušku. O mých názorech
-      na ně jiných koníčcích se dočtete na mém <a href="blog">blogu!</a>
+      na ně a o jiných koníčcích se dočtete na mém <a href="blog">blogu!</a>
     </p>
-    <h2>Projekty</h2>
+    <h2>Top projekty (ostatní na GitHubu níže)</h2>
     <div class="card-wrap">
       {
         projectArr.map((proj) => {
@@ -54,14 +77,20 @@ const projectArr = [
               title={proj.title}
               desc={proj.desc}
               techs={proj.techs}
+              link={proj.link}
+              ghLink={proj.ghLink}
             />
           );
         })
       }
     </div>
     <p class="basic-text">
-      Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Fusce
-      consectetuer risus a nunc. Nulla accumsan.
+      Je samozřejmé, že neuvádím všechny projekty a všechny nástroje, které jsem
+      se za tu dobu naučil. Vybral jsem jen pár z poslední doby, s kterými jsem
+      v rozumné míře spokojený. Umím pracovat jak s client-side routery, tak s
+      nástroji na state management, všemožnými preprocesory, knihovnami a tak
+      dále. Rozhodně se také orientuji v konceptech jako jsou sessions, cookies,
+      AJAX a podobné, které jsou například u Nodu nepostradatelné.
     </p>
     <div class="tech-heading-wrap">
       <h2 class="tech-heading">Technologie</h2>
@@ -71,6 +100,12 @@ const projectArr = [
       <Technologies tech={techArr} client:visible />
     </div>
     <h2>Kontakty</h2>
+    <p class="basic-text">
+      V případě zájmu se nebojte ozvat na kterýkoliv z mých účtů nebo jen
+      napište mail. Rád Vám okamžitě odpovím, ať už máte nabídku (spolu)práce,
+      nebo si jen chcete popovídat o technologiích nebo nějakém Vašem zajímavém
+      projektu.
+    </p>
     <div class="contacts">
       <a href="https://www.linkedin.com/in/josef-h%C5%99ebec-4b10b7255/"
         >LinkedIn -></a
@@ -135,9 +170,12 @@ const projectArr = [
     padding: 24px 0;
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 16px;
     & p {
       font-weight: 700;
+    }
+    & * {
+      width: fit-content;
     }
   }
   .mail {
@@ -195,11 +233,11 @@ const projectArr = [
 </style>
 
 <script>
-  const mail = document.querySelector(".mail")!;
+  const mail = document.querySelector(".mail-wrap")!;
   const mailPop = document.querySelector(".mail-pop")!;
 
-  function clipbrd() {
-    navigator.clipboard.writeText("josefhrebec02@gmail.com");
+  async function clipbrd() {
+    await navigator.clipboard.writeText("josefhrebec02@gmail.com");
     mailPop.classList.add("mail-pop-active");
     setTimeout(() => {
       mailPop.classList.remove("mail-pop-active");

@@ -16,10 +16,12 @@ const btnRefs = ref([]);
 const hintText = computed(() => {
   if (amount.value == 0) {
     return "";
-  } else if (amount.value < len) {
+  } else if (amount.value < 3) {
     return "blur-one";
-  } else {
+  } else if (amount.value < len) {
     return "blur-two";
+  } else {
+    return "blur-three";
   }
 });
 
@@ -81,16 +83,6 @@ watch(amount, (curr) => {
   gap: 8px;
 }
 
-.hint {
-  font-weight: 700;
-  font-size: 1.8em;
-  margin: 0 auto;
-}
-
-.last {
-  color: gold;
-}
-
 button {
   min-width: fit-content;
   height: 4em;
@@ -124,16 +116,20 @@ button > div {
 }
 
 .bun > * {
-  filter: blur(8px);
+  filter: blur(9px);
   transition: all 0.5s;
 }
 
 .bun > .blur-one {
-  filter: blur(4px);
+  filter: blur(5px);
 }
 
 .bun > .blur-two {
-  filter: blur(0);
+  filter: blur(3px);
+}
+
+.bun > .blur-three {
+  filter: blur(0px);
 }
 
 img {
