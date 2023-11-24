@@ -1,7 +1,7 @@
 ---
-title: "Je Astro tak skvělé?"
+title: "Stojí Astro za zkoušku?"
 description: "Proč je (méně JS > více JS) a proč na DX opravdu záleží."
-date: 2023-23-11
+date: "2023-23-11"
 image: "/assets/astro-homepage.png"
 ---
 

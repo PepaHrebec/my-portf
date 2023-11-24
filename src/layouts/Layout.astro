@@ -3,6 +3,7 @@ interface Props {
   title: string;
   description: string;
   type: string;
+  image: string;
 }
 
 import "@fontsource/inter/300.css";
@@ -10,74 +11,90 @@ import "@fontsource/inter/400.css";
 import "@fontsource/inter/700.css";
 
 import Header from "../components/Header.astro";
+import { SEO } from "astro-seo";
 
-const { title, description, type } = Astro.props;
+const { title, description, type, image } = Astro.props;
 ---
 
 <!doctype html>
 <html lang="en" data-theme="dark">
   <head>
     <meta charset="UTF-8" />
-    <meta name="description" content="Astro description" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta property="og:title" content=`${title}` />
-    <meta property="og:description" content=`${description}` />
-    <meta property="og:type" content=`${type}` />
-    <!-- <meta property="og:url" content=`${url}` /> -->
+    <SEO
+      title={title}
+      description={description}
+      canonical={Astro.url.href}
+      openGraph={{
+        basic: {
+          title: title,
+          type: type,
+          image: `https://josefhrebec.cz${image}`,
+        },
+        optional: {
+          description: description,
+        },
+      }}
+      ,
+      twitter={{
+        title: title,
+        image: `https://josefhrebec.cz/assets/playdate.jpg`,
+        imageAlt: "Logo of Blogfolio",
+        description: description,
+      }}
+    />
     <!-- <meta
       property="og:image"
       content="https://ahrefs.com/blog/wp-content/uploads/2019/12/fb-how-to-become-an-seo-expert.png"
     /> -->
     <meta name="generator" content={Astro.generator} />
-    <title>{title}</title>
   </head>
   <body>
     <Header />
     <slot />
+    <script src="../libs/darkmode.ts"></script>
+
+    <style is:global>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Inter", sans-serif;
+      }
+      [data-theme="light"] {
+        --main-backg: #f7f7f7;
+        --main-text: #1e1e1e;
+        --interactive-backg: #fafafa;
+        --small-text: #585858;
+        --inverse-backg: #161616;
+        --inverse-text: #e3e3e3;
+      }
+      [data-theme="dark"] {
+        --main-backg: #161616;
+        --main-text: #e3e3e3;
+        --interactive-backg: #282828;
+        --small-text: #b3b3b3;
+        --inverse-backg: #f7f7f7;
+        --inverse-text: #1e1e1e;
+      }
+      [data-theme="dark"] .astro-code,
+      [data-theme="dark"] .astro-code span {
+        color: var(--shiki-dark) !important;
+        background-color: var(--shiki-dark-bg) !important;
+
+        font-style: var(--shiki-dark-font-style) !important;
+        font-weight: var(--shiki-dark-font-weight) !important;
+        text-decoration: var(--shiki-dark-text-decoration) !important;
+      }
+      html {
+        background-color: var(--main-backg);
+      }
+      body {
+        padding: 32px 16px;
+        max-width: 48rem;
+        margin: 0 auto;
+      }
+    </style>
   </body>
 </html>
-
-<script src="../libs/darkmode.ts"></script>
-
-<style is:global>
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Inter", sans-serif;
-  }
-  [data-theme="light"] {
-    --main-backg: #f7f7f7;
-    --main-text: #1e1e1e;
-    --interactive-backg: #fafafa;
-    --small-text: #585858;
-    --inverse-backg: #161616;
-    --inverse-text: #e3e3e3;
-  }
-  [data-theme="dark"] {
-    --main-backg: #161616;
-    --main-text: #e3e3e3;
-    --interactive-backg: #282828;
-    --small-text: #b3b3b3;
-    --inverse-backg: #f7f7f7;
-    --inverse-text: #1e1e1e;
-  }
-  [data-theme="dark"] .astro-code,
-  [data-theme="dark"] .astro-code span {
-    color: var(--shiki-dark) !important;
-    background-color: var(--shiki-dark-bg) !important;
-
-    font-style: var(--shiki-dark-font-style) !important;
-    font-weight: var(--shiki-dark-font-weight) !important;
-    text-decoration: var(--shiki-dark-text-decoration) !important;
-  }
-  html {
-    background-color: var(--main-backg);
-  }
-  body {
-    padding: 32px 16px;
-    max-width: 48rem;
-    margin: 0 auto;
-  }
-</style>

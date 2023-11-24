@@ -1,13 +1,13 @@
 ---
 const { title, description, date, image } = Astro.props;
-const dateStr = new Date(date).toISOString().substring(0, 10);
+// const dateStr = new Date(date).toISOString().substring(0, 10);
 ---
 
 <main>
   <div class="center">
     <img src=`${image}` alt="" />
     <h1>{title}</h1>
-    <p class="date">{dateStr}</p>
+    <p class="date">{date}</p>
   </div>
   <p class="descr">{description}</p>
   <slot />
@@ -26,7 +26,8 @@ const dateStr = new Date(date).toISOString().substring(0, 10);
   h4,
   h5,
   h6,
-  p {
+  p,
+  li {
     color: var(--main-text);
   }
   p {

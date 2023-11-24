@@ -10,7 +10,12 @@ const sortedPosts = allPosts.sort((frst, sec) => {
 });
 ---
 
-<Layout title="Články" description="Seznam článků blogu." type="website">
+<Layout
+  title="Články"
+  description="Seznam článků blogu."
+  type="website"
+  image="/assets/playdate.jpg"
+>
   <main>
     {
       allPosts.map((post) => {

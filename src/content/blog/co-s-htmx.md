@@ -1,7 +1,7 @@
 ---
 title: "Co s HTMX?"
 description: "Na co je nám vlastně HTMX?"
-date: 2023-24-11
+date: "2023-24-11"
 image: "/assets/htmx-blog.png"
 ---
 
