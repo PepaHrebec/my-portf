@@ -16,12 +16,14 @@ const btnRefs = ref([]);
 const hintText = computed(() => {
   if (amount.value == 0) {
     return "";
-  } else if (amount.value < 3) {
+  } else if (amount.value < Math.floor(len / 3)) {
     return "blur-one";
-  } else if (amount.value < len) {
+  } else if (amount.value < Math.floor(len / 3) * 2) {
     return "blur-two";
-  } else {
+  } else if (amount.value < len) {
     return "blur-three";
+  } else {
+    return "blur-four";
   }
 });
 
@@ -121,14 +123,18 @@ button > div {
 }
 
 .bun > .blur-one {
-  filter: blur(5px);
+  filter: blur(6px);
 }
 
 .bun > .blur-two {
-  filter: blur(3px);
+  filter: blur(4px);
 }
 
 .bun > .blur-three {
+  filter: blur(2px);
+}
+
+.bun > .blur-four {
   filter: blur(0px);
 }
 

@@ -3,6 +3,7 @@ title: "Stojí Astro za zkoušku?"
 description: "Proč je (méně JS > více JS) a proč na DX opravdu záleží."
 date: "2023-23-11"
 image: "/assets/astro-homepage.png"
+ready: true
 ---
 
 Betteridgův zákon nadpisů tvrdí, že pokud otázka jakéhokoliv článku končí otazníkem, dá se prakticky bezestrachu přeskočit tím, že se na ní odpoví "Ne". S radostí Vás tedy nabádám k tomu, abyste jeden zákon porušili a na konci článku odpověděli "Ano", stejně jako jsem to udělal já, když jsem v Astru dával dohromady moji první stránku nebo i toto [blogfolio](./../), za jehož návštěvu jsem Vám vděčný.
