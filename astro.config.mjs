@@ -11,11 +11,11 @@ export default defineConfig({
     shikiConfig: {
       experimentalThemes: {
         light: "github-light",
-        dark: "github-dark"
+        dark: "github-dark",
       },
-      langs: ["javascript", "astro"],
-      wrap: true
-    }
+      langs: ["javascript", "astro", "html"],
+      wrap: true,
+    },
   },
-  integrations: [vue(), robotsTxt(), sitemap()]
+  integrations: [vue(), robotsTxt(), sitemap()],
 });
